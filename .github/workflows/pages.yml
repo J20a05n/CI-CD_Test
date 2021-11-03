@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: J20a05n/CI-CD_Test
+        uses: J20a05n/CI-CD_Test@v1.2
         with:
           who-to-greet: 'Jan K'
       # Use the output from the `hello` step
