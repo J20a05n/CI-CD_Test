@@ -9,21 +9,21 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2
-      -
-        name: Generate page
-        run:  |
-          mkdir public
-          cat > public/index.html <<EOL
-          <!doctype html>
-          <html>
-            <head>
-              <title>GitHub Pages deployed!</title>
-            </head>
-            <body>
-              <p>HELLO WORLD!</p>
-            </body>
-          </html>
-          EOL
+      #-
+       # name: Generate page
+       # run:  |
+       #   mkdir public
+       #   cat > public/index.html <<EOL
+       #   <!doctype html>
+       #   <html>
+       #     <head>
+       #       <title>GitHub Pages deployed!</title>
+       #     </head>
+       #     <body>
+       #       <p>HELLO WORLD!</p>
+       #     </body>
+       #   </html>
+       #   EOL
       -
         name: Deploy to GitHub Pages
         if: success()
