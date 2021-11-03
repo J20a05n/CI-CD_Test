@@ -1,15 +1,35 @@
-on: [push]
+name: website
+
+on: push
 
 jobs:
-  hello_world_job:
+  publish:
     runs-on: ubuntu-latest
-    name: A job to say hello
     steps:
-      - name: Hello world action step
-        id: hello
-        uses: J20a05n/CI-CD_Test@v1.2
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Gen dummy page
+        run: |
+          mkdir public
+          cat > public/index.html <<EOL
+          <!doctype html>
+          <html>
+            <head>
+              <title>GitHub Pages deployed!</title>
+            </head>
+            <body>
+              <p>GitHub Pages with <strong>${{ github.sha }}</strong> commit ID has been deployed through <a href="https://github.com/marketplace/actions/github-pages">GitHub Pages action</a> successfully.</p>
+            </body>
+          </html>
+          EOL
+      -
+        name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
         with:
-          who-to-greet: 'Jan K'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          target_branch: gh-pages
+          build_dir: public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
