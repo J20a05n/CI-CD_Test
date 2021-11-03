@@ -20,7 +20,7 @@ jobs:
               <title>GitHub Pages deployed!</title>
             </head>
             <body>
-              <p>Hello World.</p>
+              <p><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Hello World</a></p>
             </body>
           </html>
           EOL
